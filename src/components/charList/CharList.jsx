@@ -1,52 +1,106 @@
 import './charList.scss';
-import abyss from '../../resources/img/abyss.jpg';
+import {Component} from 'react';
+import MarvelService from '../../services/MarvelService';
+import CharListItem from '../charListItem/CharListItem';
+import ErrorMessage from "../errorMessage/ErrorMessage";
+import Spinner from "../spinner/Spinner";
+import PropTypes from "prop-types";
 
-const CharList = () => {
+class CharList extends Component {
+    state = {
+        characters: [],
+        loading: true,
+        error: false,
+        newItemLoading: false,
+        offset: 520,
+        charEnded: false
+    }
+    marvelService = new MarvelService();
+
+    componentDidMount() {
+        this.onLoadMore();
+    }
+
+
+    onCharListLoaded = (chars) => {
+        let ended = false;
+        if (chars.length < 9) {
+            ended = true;
+        }
+
+        this.setState(({characters, offset}) => ({
+            characters: [...characters, ...chars],
+            loading: false,
+            newItemLoading: false,
+            offset: offset + 9,
+            charEnded: ended
+        }));
+    }
+
+    onError = () => {
+        this.setState({
+            loading: false,
+            error: true
+        })
+    }
+
+    onLoadMore = (offset) => {
+        this.onCharListLoading();
+        this.marvelService
+            .getAllCharacters(offset)
+            .then(this.onCharListLoaded)
+            .catch(this.onError);
+    }
+
+    onCharListLoading = () => {
+        this.setState({
+            newItemLoading: true
+        })
+    }
+
+    render() {
+        const {characters, loading, error, newItemLoading, offset, charEnded} = this.state;
+        const errorMessage = error ? <ErrorMessage/> : null;
+        const spinner = loading ? <Spinner/> : null;
+        const content = !(error || loading) ?
+            <View chars={characters} onCharSelected={this.props.onCharSelected}/> : null;
+
+        return (
+            <div className="char__list">
+                {errorMessage}
+                {spinner}
+                {content}
+                <button
+                    disabled={newItemLoading}
+                    onClick={() => this.onLoadMore(offset)}
+                    style={{'display': charEnded ? 'none' : 'block'}}
+                    className="button button__main button__long">
+                    <div className="inner">{newItemLoading ? 'data is loading' : 'load more'}</div>
+                </button>
+            </div>
+        )
+    }
+}
+
+const View = ({chars, onCharSelected}) => {
     return (
-        <div className="char__list">
-            <ul className="char__grid">
-                <li className="char__item">
-                    <img src={abyss} alt="abyss"/>
-                    <div className="char__name">Abyss</div>
-                </li>
-                <li className="char__item char__item_selected">
-                    <img src={abyss} alt="abyss"/>
-                    <div className="char__name">Abyss</div>
-                </li>
-                <li className="char__item">
-                    <img src={abyss} alt="abyss"/>
-                    <div className="char__name">Abyss</div>
-                </li>
-                <li className="char__item">
-                    <img src={abyss} alt="abyss"/>
-                    <div className="char__name">Abyss</div>
-                </li>
-                <li className="char__item">
-                    <img src={abyss} alt="abyss"/>
-                    <div className="char__name">Abyss</div>
-                </li>
-                <li className="char__item">
-                    <img src={abyss} alt="abyss"/>
-                    <div className="char__name">Abyss</div>
-                </li>
-                <li className="char__item">
-                    <img src={abyss} alt="abyss"/>
-                    <div className="char__name">Abyss</div>
-                </li>
-                <li className="char__item">
-                    <img src={abyss} alt="abyss"/>
-                    <div className="char__name">Abyss</div>
-                </li>
-                <li className="char__item">
-                    <img src={abyss} alt="abyss"/>
-                    <div className="char__name">Abyss</div>
-                </li>
-            </ul>
-            <button className="button button__main button__long">
-                <div className="inner">load more</div>
-            </button>
-        </div>
+        <ul className="char__grid">
+            {chars.map(char => {
+                return (
+                    <CharListItem
+                        onCharSelected={onCharSelected}
+                        id={char.id}
+                        key={char.id}
+                        name={char.name}
+                        img={char.thumbnail}/>
+                )
+            })}
+        </ul>
     )
+}
+
+CharList.propTypes = {
+    onCharSelected: PropTypes.func
 }
 
 export default CharList;
