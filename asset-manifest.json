@@ -1,18 +1,16 @@
 {
   "files": {
-    "main.css": "/react-MarvelDB-app/static/css/main.df9ba149.css",
-    "main.js": "/react-MarvelDB-app/static/js/main.9831e8e3.js",
+    "main.css": "/react-MarvelDB-app/static/css/main.f0ccef4d.css",
+    "main.js": "/react-MarvelDB-app/static/js/main.d2feb36e.js",
     "static/media/vision.png": "/react-MarvelDB-app/static/media/vision.067d4ae1936d64a577ce.png",
-    "static/media/thor.jpeg": "/react-MarvelDB-app/static/media/thor.533e3a5e127689ab0b1f.jpeg",
-    "static/media/abyss.jpg": "/react-MarvelDB-app/static/media/abyss.93d211d37b67a60bace9.jpg",
     "static/media/mjolnir.png": "/react-MarvelDB-app/static/media/mjolnir.61f31e1809f12183a524.png",
     "static/media/error.gif": "/react-MarvelDB-app/static/media/error.42292aa12b6bc303ce99.gif",
     "index.html": "/react-MarvelDB-app/index.html",
-    "main.df9ba149.css.map": "/react-MarvelDB-app/static/css/main.df9ba149.css.map",
-    "main.9831e8e3.js.map": "/react-MarvelDB-app/static/js/main.9831e8e3.js.map"
+    "main.f0ccef4d.css.map": "/react-MarvelDB-app/static/css/main.f0ccef4d.css.map",
+    "main.d2feb36e.js.map": "/react-MarvelDB-app/static/js/main.d2feb36e.js.map"
   },
   "entrypoints": [
-    "static/css/main.df9ba149.css",
-    "static/js/main.9831e8e3.js"
+    "static/css/main.f0ccef4d.css",
+    "static/js/main.d2feb36e.js"
   ]
 }
