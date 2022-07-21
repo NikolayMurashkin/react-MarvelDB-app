@@ -22,7 +22,7 @@ class App extends Component {
                 <AppHeader/>
                 <main>
                     <ErrorBoundary>
-                        {/*<RandomChar/>*/}
+                        <RandomChar/>
                     </ErrorBoundary>
                     <div className="char">
                         <ErrorBoundary>
