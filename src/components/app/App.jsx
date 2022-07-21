@@ -9,7 +9,7 @@ import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 class App extends Component {
     state = {
-        selectedChar: null
+        selectedChar: 0
     }
 
     onCharSelected = (charId) => {
@@ -29,7 +29,7 @@ class App extends Component {
                             <CharList onCharSelected={this.onCharSelected}/>
                         </ErrorBoundary>
                         <ErrorBoundary>
-                            {/*<CharInfo charId={this.state.selectedChar}/>*/}
+                            <CharInfo charId={this.state.selectedChar}/>
                         </ErrorBoundary>
                     </div>
                     <img className="bg-decoration"

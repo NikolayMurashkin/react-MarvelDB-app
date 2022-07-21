@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 class CharInfo extends Component {
     state = {
-        selectedChar: null,
+        selectedChar: 0,
         loading: false,
         error: false
     }

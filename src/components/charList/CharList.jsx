@@ -5,6 +5,7 @@ import CharListItem from '../charListItem/CharListItem';
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
 import PropTypes from "prop-types";
+import React from "react";
 
 class CharList extends Component {
     state = {
@@ -82,21 +83,43 @@ class CharList extends Component {
     }
 }
 
-const View = ({chars, onCharSelected}) => {
-    return (
-        <ul className="char__grid">
-            {chars.map(char => {
-                return (
-                    <CharListItem
-                        onCharSelected={onCharSelected}
-                        id={char.id}
-                        key={char.id}
-                        name={char.name}
-                        img={char.thumbnail}/>
-                )
-            })}
-        </ul>
-    )
+class View extends Component {
+    myRef = null;
+    createRef = elem => {
+        this.myRef = elem;
+    }
+
+    onFocusChar = (e) => {
+        if (this.myRef) {
+            this.myRef.classList.remove('char__item_selected')
+        }
+
+        const target = e.target.closest('.char__item');
+
+        this.createRef(target);
+
+        this.myRef.classList.add('char__item_selected');
+    }
+
+    render() {
+        const {chars, onCharSelected} = this.props;
+
+        return (
+            <ul className="char__grid">
+                {chars.map(char => {
+                    return (
+                        <CharListItem
+                            onFocus={this.onFocusChar}
+                            onCharSelected={onCharSelected}
+                            id={char.id}
+                            key={char.id}
+                            name={char.name}
+                            img={char.thumbnail}/>
+                    )
+                })}
+            </ul>
+        )
+    }
 }
 
 CharList.propTypes = {
