@@ -8,7 +8,7 @@ import {useState} from "react";
 import ErrorBoundary from "../errorBoundary/ErrorBoundary";
 
 const App = () => {
-    const [selectedChar, setChar] = useState(null);
+    const [selectedChar, setChar] = useState(0);
 
     const onCharSelected = (charId) => {
         setChar(charId);
@@ -19,7 +19,7 @@ const App = () => {
             <AppHeader/>
             <main>
                 <ErrorBoundary>
-                    {/*<RandomChar/>*/}
+                    <RandomChar/>
                 </ErrorBoundary>
                 <div className="char">
                     <ErrorBoundary>
