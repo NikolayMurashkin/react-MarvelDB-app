@@ -1,6 +1,6 @@
 import './charList.scss';
 import {useState, useEffect, useRef} from 'react';
-import MarvelService from '../../services/MarvelService';
+import useMarvelService from '../../services/MarvelService';
 import CharListItem from '../charListItem/CharListItem';
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import Spinner from "../spinner/Spinner";
@@ -9,13 +9,11 @@ import React from "react";
 
 const CharList = (props) => {
     const [characters, setCharacters] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(false);
     const [newItemLoading, setNewItemLoading] = useState(false);
     const [offset, setOffset] = useState(520);
     const [charEnded, setCharEnded] = useState(false);
 
-    const marvelService = new MarvelService();
+    const {error, clearError, loading, getAllCharacters} = useMarvelService();
 
     useEffect(() => {
         onLoadMore()
@@ -28,33 +26,21 @@ const CharList = (props) => {
         }
 
         setCharacters(characters => [...characters, ...newChars]);
-        setLoading(false);
         setNewItemLoading(false);
         setOffset(offset => offset + 9);
         setCharEnded(ended);
     }
 
-    const onError = () => {
-        setError(true);
-        setLoading(false);
-    }
-
     const onLoadMore = (offset) => {
-        onCharListLoading();
-        marvelService
-            .getAllCharacters(offset)
-            .then(onCharListLoaded)
-            .catch(onError);
-    }
-
-    const onCharListLoading = () => {
+        clearError();
         setNewItemLoading(true);
+        getAllCharacters(offset)
+            .then(onCharListLoaded);
     }
 
     const errorMessage = error ? <ErrorMessage/> : null;
-    const spinner = loading ? <Spinner/> : null;
-    const content = !(error || loading) ?
-        <View chars={characters} onCharSelected={props.onCharSelected}/> : null;
+    const spinner = loading && !newItemLoading ? <Spinner/> : null;
+    const content = <View chars={characters} onCharSelected={props.onCharSelected}/>;
 
     return (
         <div className="char__list">
