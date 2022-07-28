@@ -1,4 +1,4 @@
-@import '../../style/variables.scss';
+@import '../../../../style/variables';
 
 .char {
   margin-top: 50px;
@@ -24,8 +24,9 @@
     transition: 0.3s transform;
     outline: none;
 
-    :hover {
+    &:hover {
       transform: translateY(-4px);
+      box-shadow: 0 5px 5px $main-color;
     }
 
     img {

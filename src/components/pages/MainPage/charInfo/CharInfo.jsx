@@ -1,8 +1,8 @@
 import './charInfo.scss';
-import useMarvelService from "../../services/MarvelService";
+import useMarvelService from "../../../../services/MarvelService";
 import {useState, useEffect} from "react";
-import ErrorMessage from "../errorMessage/ErrorMessage";
-import Spinner from "../spinner/Spinner";
+import ErrorMessage from "../../../errorMessage/ErrorMessage";
+import Spinner from "../../../spinner/Spinner";
 import Skeleton from "../skeleton/Skeleton";
 import PropTypes from 'prop-types';
 

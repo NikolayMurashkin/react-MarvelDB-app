@@ -8,7 +8,7 @@ const CharListItem = (props) => {
     return (
         <li
             className={classNames("comics__item")}>
-            <a href="#">
+            <a href="src/components/pages/ComicsPage/comicsListItem/ComicsListItem#">
                 <img style={imgStyle} src={img} alt={title} className="comics__item-img"/>
                 <div className="comics__item-name">{title}</div>
                 <div className="comics__item-price">{price}</div>

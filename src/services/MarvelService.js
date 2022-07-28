@@ -22,15 +22,16 @@ const useMarvelService = () => {
         const res = await request(`${_apiBase}comics?limit=8&offset=${offset}&${_apiKey}`);
         return res.data.results.map(_transformComics)
     }
-    const _transformComics = (comic) => {
-        const thumbnail = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
-        const description = (str) => str ? str : 'The description of this character was destroyed by Tanos';
+    const _transformComics = (comics) => {
+        const thumbnail = `${comics.thumbnail.path}.${comics.thumbnail.extension}`;
+        const description = (str) => str ? str : 'The description for this comic was destroyed by Tanos';
         return {
-            id: comic.id,
-            title: comic.title,
-            price: comic.prices[0].price,
-            description: description(comic.description),
-            pages: comic.pageCount,
+            id: comics.id,
+            title: comics.title,
+            price: comics.prices[0].price ? `$${comics.prices[0].price}` : 'not available',
+            description: description(comics.description),
+            pages: comics.pageCount ? `${comics.pageCount} pages` : 'No information about the number of pages',
+            language: 'en-us',
             thumbnail
         }
     }
@@ -42,7 +43,7 @@ const useMarvelService = () => {
                     return str.slice(0, num) + '...';
                 }
                 return str;
-            } else return 'The description of this character was destroyed by Tanos';
+            } else return 'The description for this character was destroyed by Tanos';
         }
         return {
             comics: char.comics.items,
