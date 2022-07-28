@@ -76,13 +76,13 @@ const View = (props) => {
 
     return (
         <ul className="char__grid">
-            {chars.map(char => {
+            {chars.map((char, i) => {
                 return (
                     <CharListItem
                         onFocus={onFocusChar}
                         onCharSelected={onCharSelected}
                         id={char.id}
-                        key={char.id}
+                        key={i}
                         name={char.name}
                         img={char.thumbnail}/>
                 )

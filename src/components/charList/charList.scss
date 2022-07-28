@@ -24,6 +24,9 @@
     transition: 0.3s transform;
     outline: none;
 
+    :hover {
+      transform: translateY(-4px);
+    }
 
     img {
       width: 200px;

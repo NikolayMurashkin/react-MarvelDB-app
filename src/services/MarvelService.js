@@ -18,6 +18,23 @@ const useMarvelService = () => {
         return _transformCharacter(res.data.results[0]);
     }
 
+    const getAllComics = async (offset = _baseOffset) => {
+        const res = await request(`${_apiBase}comics?limit=8&offset=${offset}&${_apiKey}`);
+        return res.data.results.map(_transformComics)
+    }
+    const _transformComics = (comic) => {
+        const thumbnail = `${comic.thumbnail.path}.${comic.thumbnail.extension}`;
+        const description = (str) => str ? str : 'The description of this character was destroyed by Tanos';
+        return {
+            id: comic.id,
+            title: comic.title,
+            price: comic.prices[0].price,
+            description: description(comic.description),
+            pages: comic.pageCount,
+            thumbnail
+        }
+    }
+
     const _transformCharacter = (char) => {
         const description = (str, num) => {
             if (str) {
@@ -38,7 +55,7 @@ const useMarvelService = () => {
         }
     }
 
-    return {error, loading, getCharacter, getAllCharacters, clearError};
+    return {error, loading, getCharacter, getAllCharacters, clearError, getAllComics};
 }
 
 export default useMarvelService;

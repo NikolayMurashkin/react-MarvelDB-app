@@ -20,6 +20,7 @@ const CharInfo = (props) => {
     }
 
     const updateChar = () => {
+        clearError();
         const charId = props.charId;
         if (!charId) {
             return
