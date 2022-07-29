@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/react-MarvelDB-app/static/css/main.4d433e42.css",
-    "main.js": "/react-MarvelDB-app/static/js/main.eaf0129a.js",
-    "static/media/vision.png": "/react-MarvelDB-app/static/media/vision.067d4ae1936d64a577ce.png",
-    "static/media/mjolnir.png": "/react-MarvelDB-app/static/media/mjolnir.61f31e1809f12183a524.png",
-    "static/media/Avengers.png": "/react-MarvelDB-app/static/media/Avengers.4065c8f9c94e3d8b039a.png",
-    "static/media/error.gif": "/react-MarvelDB-app/static/media/error.42292aa12b6bc303ce99.gif",
-    "static/media/Avengers_logo.png": "/react-MarvelDB-app/static/media/Avengers_logo.9eaf219344d83362e830.png",
-    "index.html": "/react-MarvelDB-app/index.html",
-    "main.4d433e42.css.map": "/react-MarvelDB-app/static/css/main.4d433e42.css.map",
-    "main.eaf0129a.js.map": "/react-MarvelDB-app/static/js/main.eaf0129a.js.map"
+    "main.css": "/static/css/main.8a08fa2c.css",
+    "main.js": "/static/js/main.afe9e97a.js",
+    "static/media/vision.png": "/static/media/vision.067d4ae1936d64a577ce.png",
+    "static/media/mjolnir.png": "/static/media/mjolnir.61f31e1809f12183a524.png",
+    "static/media/Avengers.png": "/static/media/Avengers.4065c8f9c94e3d8b039a.png",
+    "static/media/error.gif": "/static/media/error.42292aa12b6bc303ce99.gif",
+    "static/media/Avengers_logo.png": "/static/media/Avengers_logo.9eaf219344d83362e830.png",
+    "index.html": "/index.html",
+    "main.8a08fa2c.css.map": "/static/css/main.8a08fa2c.css.map",
+    "main.afe9e97a.js.map": "/static/js/main.afe9e97a.js.map"
   },
   "entrypoints": [
-    "static/css/main.4d433e42.css",
-    "static/js/main.eaf0129a.js"
+    "static/css/main.8a08fa2c.css",
+    "static/js/main.afe9e97a.js"
   ]
 }
