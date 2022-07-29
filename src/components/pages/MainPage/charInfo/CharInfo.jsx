@@ -5,6 +5,7 @@ import ErrorMessage from "../../../errorMessage/ErrorMessage";
 import Spinner from "../../../spinner/Spinner";
 import Skeleton from "../skeleton/Skeleton";
 import PropTypes from 'prop-types';
+import {Link} from "react-router-dom";
 
 const CharInfo = (props) => {
     const [selectedChar, setSelectedChar] = useState(0);
@@ -47,6 +48,7 @@ const CharInfo = (props) => {
 const View = ({char}) => {
     const {name, description, homepage, wiki, thumbnail, comics} = char;
 
+
     const imgStyle = char.thumbnail.includes('image_not_available') || char.thumbnail.includes('4c002e0305708')
         ? {objectFit: 'fill'}
         : {objectFit: 'cover'};
@@ -73,9 +75,12 @@ const View = ({char}) => {
             <ul className="char__comics-list">
                 {comics.length > 0 ? null : "There is no comics with this character"}
                 {comics.map((item, i) => {
+                    const comicId = item.resourceURI.replace(/\D/g, "").slice(1);
                     // eslint-disable-next-line
                     if (i > 9) return;
-                    return <li key={i} className="char__comics-item">{item.name}</li>
+                    return <li key={i} className="char__comics-item"><Link
+                        to={`/comics/${comicId}`}>{item.name}</Link>
+                    </li>
                 })}
             </ul>
         </>

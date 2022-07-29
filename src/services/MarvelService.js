@@ -4,7 +4,7 @@ const useMarvelService = () => {
     const _apiBase = 'https://gateway.marvel.com:443/v1/public/';
     const _apiKey = 'apikey=9348dbb59adab6792791d34da902e88b';
     const _limit = 9;
-    const _baseOffset = 520;
+    const _baseOffset = 1200;
 
     const {error, loading, request, clearError} = useHttp();
 
@@ -19,9 +19,15 @@ const useMarvelService = () => {
     }
 
     const getAllComics = async (offset = _baseOffset) => {
-        const res = await request(`${_apiBase}comics?limit=8&offset=${offset}&${_apiKey}`);
+        const res = await request(`${_apiBase}comics?limit=8&offset=23000&${_apiKey}`);
         return res.data.results.map(_transformComics)
     }
+
+    const getComic = async (id) => {
+        const res = await request(`${_apiBase}comics/${id}?${_apiKey}`);
+        return _transformComics(res.data.results[0]);
+    }
+
     const _transformComics = (comics) => {
         const thumbnail = `${comics.thumbnail.path}.${comics.thumbnail.extension}`;
         const description = (str) => str ? str : 'The description for this comic was destroyed by Tanos';
@@ -56,7 +62,7 @@ const useMarvelService = () => {
         }
     }
 
-    return {error, loading, getCharacter, getAllCharacters, clearError, getAllComics};
+    return {error, loading, getCharacter, getAllCharacters, clearError, getAllComics, getComic};
 }
 
 export default useMarvelService;

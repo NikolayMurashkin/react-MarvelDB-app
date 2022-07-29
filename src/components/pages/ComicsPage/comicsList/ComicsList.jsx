@@ -1,5 +1,5 @@
 import './comicsList.scss';
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect} from "react";
 import useMarvelService from "../../../../services/MarvelService";
 import ErrorMessage from "../../../errorMessage/ErrorMessage";
 import Spinner from "../../../spinner/Spinner";
@@ -39,8 +39,6 @@ const ComicsList = (props) => {
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading ? <Spinner/> : null;
     const content = <View comics={comics} onComicSelected={props.onComicSelected}/>;
-
-    console.log('render')
 
     return (
         <div className="comics__list">
