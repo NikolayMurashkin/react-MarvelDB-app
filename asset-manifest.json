@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "./static/css/main.44450132.css",
-    "main.js": "./static/js/main.4aff8235.js",
-    "static/media/vision.png": "./static/media/vision.067d4ae1936d64a577ce.png",
-    "static/media/capError.png": "./static/media/capError.725a61d0058c9ed82001.png",
-    "static/media/hydraGray.png": "./static/media/hydraGray.8c436e7930ca3eb21e45.png",
-    "static/media/mjolnir.png": "./static/media/mjolnir.61f31e1809f12183a524.png",
-    "static/media/Avengers.png": "./static/media/Avengers.4065c8f9c94e3d8b039a.png",
-    "static/media/error.gif": "./static/media/error.42292aa12b6bc303ce99.gif",
-    "static/media/Avengers_logo.png": "./static/media/Avengers_logo.9eaf219344d83362e830.png",
-    "index.html": "./index.html",
-    "main.44450132.css.map": "./static/css/main.44450132.css.map",
-    "main.4aff8235.js.map": "./static/js/main.4aff8235.js.map"
+    "main.css": "/react-MarvelDB-app/static/css/main.a9a83d2c.css",
+    "main.js": "/react-MarvelDB-app/static/js/main.cc1602b8.js",
+    "static/media/vision.png": "/react-MarvelDB-app/static/media/vision.067d4ae1936d64a577ce.png",
+    "static/media/capError.png": "/react-MarvelDB-app/static/media/capError.725a61d0058c9ed82001.png",
+    "static/media/hydraGray.png": "/react-MarvelDB-app/static/media/hydraGray.8c436e7930ca3eb21e45.png",
+    "static/media/mjolnir.png": "/react-MarvelDB-app/static/media/mjolnir.61f31e1809f12183a524.png",
+    "static/media/Avengers.png": "/react-MarvelDB-app/static/media/Avengers.4065c8f9c94e3d8b039a.png",
+    "static/media/error.gif": "/react-MarvelDB-app/static/media/error.42292aa12b6bc303ce99.gif",
+    "static/media/Avengers_logo.png": "/react-MarvelDB-app/static/media/Avengers_logo.9eaf219344d83362e830.png",
+    "index.html": "/react-MarvelDB-app/index.html",
+    "main.a9a83d2c.css.map": "/react-MarvelDB-app/static/css/main.a9a83d2c.css.map",
+    "main.cc1602b8.js.map": "/react-MarvelDB-app/static/js/main.cc1602b8.js.map"
   },
   "entrypoints": [
-    "static/css/main.44450132.css",
-    "static/js/main.4aff8235.js"
+    "static/css/main.a9a83d2c.css",
+    "static/js/main.cc1602b8.js"
   ]
 }
