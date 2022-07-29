@@ -5,7 +5,7 @@ import {MainPage, ComicsPage, SingleComic, Page404} from '../pages';
 
 const App = () => {
     return (
-        <Router basename="/react-MarvelDB-app/#/">
+        <Router basename="/react-MarvelDB-app">
             <div className="app">
                 <AppHeader/>
                 <main>
