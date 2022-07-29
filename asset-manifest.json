@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/react-MarvelDB-app/static/css/main.a9a83d2c.css",
-    "main.js": "/react-MarvelDB-app/static/js/main.f8b479c9.js",
+    "main.js": "/react-MarvelDB-app/static/js/main.7842c9e2.js",
     "static/media/vision.png": "/react-MarvelDB-app/static/media/vision.067d4ae1936d64a577ce.png",
     "static/media/capError.png": "/react-MarvelDB-app/static/media/capError.725a61d0058c9ed82001.png",
     "static/media/hydraGray.png": "/react-MarvelDB-app/static/media/hydraGray.8c436e7930ca3eb21e45.png",
@@ -11,10 +11,10 @@
     "static/media/Avengers_logo.png": "/react-MarvelDB-app/static/media/Avengers_logo.9eaf219344d83362e830.png",
     "index.html": "/react-MarvelDB-app/index.html",
     "main.a9a83d2c.css.map": "/react-MarvelDB-app/static/css/main.a9a83d2c.css.map",
-    "main.f8b479c9.js.map": "/react-MarvelDB-app/static/js/main.f8b479c9.js.map"
+    "main.7842c9e2.js.map": "/react-MarvelDB-app/static/js/main.7842c9e2.js.map"
   },
   "entrypoints": [
     "static/css/main.a9a83d2c.css",
-    "static/js/main.f8b479c9.js"
+    "static/js/main.7842c9e2.js"
   ]
 }
