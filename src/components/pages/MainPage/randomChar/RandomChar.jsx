@@ -25,7 +25,6 @@ const RandomChar = () => {
 
     const onCharLoaded = (char) => {
         setChar(char);
-        console.log('asda')
     }
 
     const errorMessage = error ? <ErrorMessage/> : null;
