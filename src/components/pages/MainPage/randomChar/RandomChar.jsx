@@ -5,6 +5,7 @@ import useMarvelService from '../../../../services/MarvelService';
 
 import './randomChar.scss';
 import mjolnir from '../../../../resources/img/mjolnir.png';
+import * as assert from "assert";
 
 const RandomChar = () => {
     const [char, setChar] = useState(null);
@@ -24,6 +25,7 @@ const RandomChar = () => {
 
     const onCharLoaded = (char) => {
         setChar(char);
+        console.log('asda')
     }
 
     const errorMessage = error ? <ErrorMessage/> : null;
