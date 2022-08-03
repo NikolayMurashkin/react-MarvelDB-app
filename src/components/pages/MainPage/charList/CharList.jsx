@@ -6,6 +6,7 @@ import ErrorMessage from "../../../errorMessage/ErrorMessage";
 import Spinner from "../../../spinner/Spinner";
 import PropTypes from "prop-types";
 import React from "react";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 const CharList = (props) => {
     const [characters, setCharacters] = useState([]);
@@ -75,19 +76,21 @@ const View = (props) => {
     const {chars, onCharSelected} = props;
 
     return (
-        <ul className="char__grid">
+        <TransitionGroup component={'ul'} appear={true} className="char__grid">
             {chars.map((char, i) => {
                 return (
-                    <CharListItem
-                        onFocus={onFocusChar}
-                        onCharSelected={onCharSelected}
-                        id={char.id}
-                        key={i}
-                        name={char.name}
-                        img={char.thumbnail}/>
+                    <CSSTransition timeout={0} classNames="charListItem">
+                        <CharListItem
+                            onFocus={onFocusChar}
+                            onCharSelected={onCharSelected}
+                            id={char.id}
+                            key={i}
+                            name={char.name}
+                            img={char.thumbnail}/>
+                    </CSSTransition>
                 )
             })}
-        </ul>
+        </TransitionGroup>
     )
 }
 

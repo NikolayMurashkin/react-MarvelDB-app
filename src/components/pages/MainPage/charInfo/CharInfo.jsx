@@ -6,6 +6,7 @@ import Spinner from "../../../spinner/Spinner";
 import Skeleton from "../skeleton/Skeleton";
 import PropTypes from 'prop-types';
 import {Link} from "react-router-dom";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 const CharInfo = (props) => {
     const [selectedChar, setSelectedChar] = useState(0);
@@ -71,18 +72,20 @@ const View = ({char}) => {
             <div className="char__descr">
                 {description}
             </div>
-            <div className="char__comics">Comics:</div>
-            <ul className="char__comics-list">
+            <h3 className="char__comics">Comics:</h3>
+            <TransitionGroup component={'ul'} appear={true} className="char__comics-list">
                 {comics.length > 0 ? null : "There is no comics with this character"}
                 {comics.map((item, i) => {
                     const comicId = item.resourceURI.replace(/\D/g, "").slice(1);
                     // eslint-disable-next-line
                     if (i > 9) return;
-                    return <li key={i} className="char__comics-item"><Link
-                        to={`/comics/${comicId}`}>{item.name}</Link>
-                    </li>
+                    return <CSSTransition timeout={0} classNames="char__comics-item">
+                        <li key={i} className="char__comics-item">
+                            <Link to={`/comics/${comicId}`}>{item.name}</Link>
+                        </li>
+                    </CSSTransition>
                 })}
-            </ul>
+            </TransitionGroup>
         </>
     )
 }

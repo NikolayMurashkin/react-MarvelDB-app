@@ -10,8 +10,6 @@ import mjolnir from '../../../../resources/img/mjolnir.png';
 
 const RandomChar = () => {
     const [char, setChar] = useState(null);
-    const [inProp, setInProp] = useState(false);
-
 
     const {error, loading, getCharacter, clearError} = useMarvelService();
 
@@ -31,7 +29,7 @@ const RandomChar = () => {
 
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading ? <Spinner/> : null;
-    const content = !(error || loading || !char) ? <View char={char} inProp={inProp}/> : null;
+    const content = !(error || loading || !char) ? <View char={char}/> : null;
     return (
         <div className="randomchar">
             {errorMessage}
@@ -54,7 +52,7 @@ const RandomChar = () => {
     )
 }
 
-const View = ({char, inProp}) => {
+const View = ({char}) => {
     const {name, description, homepage, wiki, thumbnail} = char;
     const imgStyle = thumbnail.includes('image_not_available')
     || thumbnail.includes('4c002e0305708')
@@ -65,8 +63,7 @@ const View = ({char, inProp}) => {
         <div className="randomchar__block">
             <TransitionGroup component={null} appear={true}>
                 <CSSTransition
-                    in={inProp}
-                    timeout={1500}
+                    timeout={500}
                     classNames="randomchar__img"
                 >
                     <img
