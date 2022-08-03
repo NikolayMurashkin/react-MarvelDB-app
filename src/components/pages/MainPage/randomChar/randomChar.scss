@@ -74,4 +74,20 @@
   }
 }
 
+.randomchar__img-appear {
+  transform: translateY(-50px);
+  opacity: 0;
+}
+
+.randomchar__img-appear-active {
+  opacity: 1;
+  transition: all 1500ms;
+  transform: translateY(0px);
+}
+
+.randomchar__img-appear-done {
+  opacity: 1;
+  transform: translateY(0px);
+}
+
 

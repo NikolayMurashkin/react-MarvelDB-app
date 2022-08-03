@@ -2,13 +2,15 @@ import {useEffect, useState} from 'react';
 import Spinner from '../../../spinner/Spinner';
 import ErrorMessage from '../../../errorMessage/ErrorMessage';
 import useMarvelService from '../../../../services/MarvelService';
+import {CSSTransition, TransitionGroup} from "react-transition-group";
+
 
 import './randomChar.scss';
 import mjolnir from '../../../../resources/img/mjolnir.png';
-import * as assert from "assert";
 
 const RandomChar = () => {
     const [char, setChar] = useState(null);
+    const [inProp, setInProp] = useState(false);
 
 
     const {error, loading, getCharacter, clearError} = useMarvelService();
@@ -29,7 +31,7 @@ const RandomChar = () => {
 
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading ? <Spinner/> : null;
-    const content = !(error || loading || !char) ? <View char={char}/> : null;
+    const content = !(error || loading || !char) ? <View char={char} inProp={inProp}/> : null;
     return (
         <div className="randomchar">
             {errorMessage}
@@ -52,20 +54,29 @@ const RandomChar = () => {
     )
 }
 
-const View = ({char}) => {
+const View = ({char, inProp}) => {
     const {name, description, homepage, wiki, thumbnail} = char;
     const imgStyle = thumbnail.includes('image_not_available')
     || thumbnail.includes('4c002e0305708')
         ? {objectFit: 'fill'}
         : {objectFit: 'cover'};
     return (
+
         <div className="randomchar__block">
-            <img
-                src={thumbnail}
-                alt="Random character"
-                className="randomchar__img"
-                style={imgStyle}
-            />
+            <TransitionGroup component={null} appear={true}>
+                <CSSTransition
+                    in={inProp}
+                    timeout={1500}
+                    classNames="randomchar__img"
+                >
+                    <img
+                        src={thumbnail}
+                        alt={name}
+                        className="randomchar__img"
+                        style={imgStyle}
+                    />
+                </CSSTransition>
+            </TransitionGroup>
             <div className="randomchar__info">
                 <p className="randomchar__name">{name}</p>
                 <p className="randomchar__descr">
