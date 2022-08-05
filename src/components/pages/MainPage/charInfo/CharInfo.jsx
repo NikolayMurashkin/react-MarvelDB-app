@@ -79,7 +79,7 @@ const View = ({char}) => {
                     const comicId = item.resourceURI.replace(/\D/g, "").slice(1);
                     // eslint-disable-next-line
                     if (i > 9) return;
-                    return <CSSTransition timeout={0} classNames="char__comics-item">
+                    return <CSSTransition key={i} timeout={0} classNames="char__comics-item">
                         <li key={i} className="char__comics-item">
                             <Link to={`/comics/${comicId}`}>{item.name}</Link>
                         </li>

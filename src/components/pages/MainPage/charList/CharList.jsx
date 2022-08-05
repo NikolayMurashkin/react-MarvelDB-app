@@ -79,7 +79,7 @@ const View = (props) => {
         <TransitionGroup component={'ul'} appear={true} className="char__grid">
             {chars.map((char, i) => {
                 return (
-                    <CSSTransition timeout={0} classNames="charListItem">
+                    <CSSTransition key={i} timeout={0} classNames="charListItem">
                         <CharListItem
                             onFocus={onFocusChar}
                             onCharSelected={onCharSelected}
