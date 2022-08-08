@@ -23,6 +23,7 @@
     cursor: pointer;
     transition: 0.3s transform;
     outline: none;
+    opacity: 0;
 
     &:hover {
       transform: translateY(-4px);
@@ -53,20 +54,17 @@
 }
 
 .charListItem-enter {
-  transform: scale(0);
   opacity: 0;
 }
 
 .charListItem-enter-active {
   opacity: 1;
-  transition: all 500ms ease-in;
-  transform: scale(1);
+  transition: all 300ms ease-in;
 }
 
 .charListItem-enter-done {
   opacity: 1;
-  transform: scale(1);
-
+  transition: all 300ms ease-in;
 }
 
 

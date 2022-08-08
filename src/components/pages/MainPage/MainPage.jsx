@@ -5,6 +5,7 @@ import ErrorBoundary from "../../errorBoundary/ErrorBoundary";
 import CharInfo from "./charInfo/CharInfo";
 import decoration from "../../../resources/img/vision.png";
 import CharSearchForm from "./charSearchForm/CharSearchForm";
+import {Helmet} from "react-helmet";
 
 const MainPage = () => {
     const [selectedItem, setItem] = useState(0);
@@ -14,29 +15,34 @@ const MainPage = () => {
     }
 
     return (
-        <div>
-            <>
+        <>
+            <Helmet>
+                <meta
+                    name="description"
+                    content="Marvel information portal"
+                />
+                <title>Marvel information portal</title>
+            </Helmet>
+            <ErrorBoundary>
+                <RandomChar/>
+            </ErrorBoundary>
+            <div className="char">
                 <ErrorBoundary>
-                    <RandomChar/>
+                    <CharList onCharSelected={onItemSelected}/>
                 </ErrorBoundary>
-                <div className="char">
+                <div>
                     <ErrorBoundary>
-                        <CharList onCharSelected={onItemSelected}/>
+                        <CharInfo charId={selectedItem}/>
                     </ErrorBoundary>
-                    <div>
-                        <ErrorBoundary>
-                            <CharInfo charId={selectedItem}/>
-                        </ErrorBoundary>
-                        <ErrorBoundary>
-                            <CharSearchForm/>
-                        </ErrorBoundary>
-                    </div>
+                    <ErrorBoundary>
+                        <CharSearchForm/>
+                    </ErrorBoundary>
                 </div>
-                <img className="bg-decoration"
-                     src={decoration}
-                     alt="vision"/>
-            </>
-        </div>
+            </div>
+            <img className="bg-decoration"
+                 src={decoration}
+                 alt="vision"/>
+        </>
     );
 };
 
